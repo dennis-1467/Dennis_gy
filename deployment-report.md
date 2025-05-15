@@ -8,21 +8,23 @@
 
 ## Objective
 
-To set up, customize, and deploy a static personal blog using Hugo, with integrated Git version control and documentation practices.
+To set up, customize, and deploy a static personal blog website using Hugo. The project integrates Git for version control and includes documentation of both the deployment process and the integration of previous assignment work.
 
 ---
 
-## Framework/Tool Selection
+## Framework and Tool Selection
 
-- **Hugo**: Fast static site generator with Markdown support.
-- **Ananke**: Clean, responsive Hugo theme.
-- **GitHub Pages**: For deployment.
-- **Git**: Version control and project management.
+- **Hugo**: A fast static site generator that supports Markdown and flexible theming.
+- **Ananke**: A clean, mobile-friendly Hugo theme chosen for its simplicity and responsiveness.
+- **Git**: Used for version control to track project changes.
+- **GitHub**: Hosted the source code and enabled automated deployment via GitHub Actions.
+- **GitHub Pages**: Used for hosting the final website at a public URL.
 
 ---
 
 ## Setup Process
 
-1. Created a new Hugo site:
+1. **Initialized a Hugo Site**
    ```bash
    hugo new site blog-website
+
