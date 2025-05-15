@@ -1,1 +1,10 @@
+baseURL = "https://dennis-1467.github.io/Dennis_gy/"
 theme = "ananke"
+
+[params]
+  # any custom theme settings here
+
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
+

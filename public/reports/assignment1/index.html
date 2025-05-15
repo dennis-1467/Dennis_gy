@@ -1,0 +1,218 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>Matrix Multiplication Project Report | </title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content='Matrix Multiplication Project Report
+Student Name: GYILE DENNIS NGMINMAALE
+Student ID: LS2425239
+Submission Date: Mar 20, 2025
+System Configuration
+
+  
+      
+          Component
+          Specification
+      
+  
+  
+      
+          CPU Model
+          12th Gen Intel(R) Core(TM) i7-12700H
+      
+      
+          Memory Size
+          7.6 GiB RAM, 2.0 GiB Swap
+      
+      
+          OS Version
+          Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows)
+      
+      
+          Compiler Version
+          GCC 13.3.0
+      
+      
+          Python Version
+          Python 3.12.3
+      
+  
+
+Implementation Details
+C Language Implementation
+
+Source Code:
+
+#include <stdio.h>
+
+int main() {
+    int a[2][2] = {{1, 2}, {3, 4}};
+    int b[2][2] = {{5, 6}, {7, 8}};
+    int result[2][2];
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < 2; k++) {
+                result[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+
+    printf("Result matrix:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+# Compilation Command
+gcc matrix.c -o matrix
+# Execution Command
+./matrix
+
+### Python Language Implementation
+- **Source Code**:
+```python
+a = [[1, 2], [3, 4]]
+b = [[5, 6], [7, 8]]
+result = [[0, 0], [0, 0]]
+
+for i in range(2):
+    for j in range(2):
+        for k in range(2):
+            result[i][j] += a[i][k] * b[k][j]
+
+print("Result matrix:")
+for row in result:
+    print(" ".join(map(str, row)))
+# Execution Command
+python3 matrix.py
+
+
+## Algorithm Verification
+- Both implementations were tested using 2x2 matrices:
+A = [[1, 2],      B = [[5, 6],
+     [3, 4]]           [7, 8]]
+- Expected result:
+[[19, 22],
+ [43, 50]]
+- Both the C and Python programs output the correct result, confirming the correctness.
+
+## Performance Analysis
+-  **Execution Times**:
+
+| Language | Real time           | User   |System  |
+|----------|---------------------|--------|--------|
+| C        | 0m0.011s            |0m0.001s|0m0.002s|
+| Python   | 0m0.106s            |0m0.019s|0m0.000s|
+
+-  **Analysis**:
+- C is faster due to compilation and lower-level memory management.
+- Python is slower because of its interpreted nature and dynamic typing.
+## Conclusion
+This project strengthened my skills in:
+- Using Unix/Linux command line tools effectively.
+- Writing and formatting technical documentation in Markdown.
+- Implementing and verifying the same algorithm in both compiled and interpreted languages.
+
+## References
+GCC Documentation: https://gcc.gnu.org
+Python Docs: https://docs.python.org/3/
+WSL Setup Guide: https://learn.microsoft.com/en-us/windows/wsl/
+
+## Appendix
+- All tests were done in a WSL2 Ubuntu environment running on Windows 11.
+- No external libraries were used.
+'><meta name=generator content="Hugo 0.147.1"><meta name=robots content="index, follow"><link rel=stylesheet href=/Dennis_gy/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css><link rel=canonical href=https://dennis-1467.github.io/Dennis_gy/reports/assignment1/><meta property="og:url" content="https://dennis-1467.github.io/Dennis_gy/reports/assignment1/"><meta property="og:title" content="Matrix Multiplication Project Report"><meta property="og:description" content='Matrix Multiplication Project Report Student Name: GYILE DENNIS NGMINMAALE
+Student ID: LS2425239
+Submission Date: Mar 20, 2025
+System Configuration Component Specification CPU Model 12th Gen Intel(R) Core(TM) i7-12700H Memory Size 7.6 GiB RAM, 2.0 GiB Swap OS Version Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows) Compiler Version GCC 13.3.0 Python Version Python 3.12.3 Implementation Details C Language Implementation Source Code: #include <stdio.h> int main() { int a[2][2] = {{1, 2}, {3, 4}}; int b[2][2] = {{5, 6}, {7, 8}}; int result[2][2]; for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { result[i][j] = 0; for (int k = 0; k < 2; k++) { result[i][j] += a[i][k] * b[k][j]; } } } printf("Result matrix:\n"); for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { printf("%d ", result[i][j]); } printf("\n"); } return 0; } # Compilation Command gcc matrix.c -o matrix # Execution Command ./matrix ### Python Language Implementation - **Source Code**: ```python a = [[1, 2], [3, 4]] b = [[5, 6], [7, 8]] result = [[0, 0], [0, 0]] for i in range(2): for j in range(2): for k in range(2): result[i][j] += a[i][k] * b[k][j] print("Result matrix:") for row in result: print(" ".join(map(str, row))) # Execution Command python3 matrix.py ## Algorithm Verification - Both implementations were tested using 2x2 matrices: A = [[1, 2], B = [[5, 6], [3, 4]] [7, 8]] - Expected result: [[19, 22], [43, 50]] - Both the C and Python programs output the correct result, confirming the correctness. ## Performance Analysis - **Execution Times**: | Language | Real time | User |System | |----------|---------------------|--------|--------| | C | 0m0.011s |0m0.001s|0m0.002s| | Python | 0m0.106s |0m0.019s|0m0.000s| - **Analysis**: - C is faster due to compilation and lower-level memory management. - Python is slower because of its interpreted nature and dynamic typing. ## Conclusion This project strengthened my skills in: - Using Unix/Linux command line tools effectively. - Writing and formatting technical documentation in Markdown. - Implementing and verifying the same algorithm in both compiled and interpreted languages. ## References GCC Documentation: https://gcc.gnu.org Python Docs: https://docs.python.org/3/ WSL Setup Guide: https://learn.microsoft.com/en-us/windows/wsl/ ## Appendix - All tests were done in a WSL2 Ubuntu environment running on Windows 11. - No external libraries were used.'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="reports"><meta property="article:published_time" content="2025-03-20T00:00:00+00:00"><meta property="article:modified_time" content="2025-03-20T00:00:00+00:00"><meta itemprop=name content="Matrix Multiplication Project Report"><meta itemprop=description content='Matrix Multiplication Project Report Student Name: GYILE DENNIS NGMINMAALE
+Student ID: LS2425239
+Submission Date: Mar 20, 2025
+System Configuration Component Specification CPU Model 12th Gen Intel(R) Core(TM) i7-12700H Memory Size 7.6 GiB RAM, 2.0 GiB Swap OS Version Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows) Compiler Version GCC 13.3.0 Python Version Python 3.12.3 Implementation Details C Language Implementation Source Code: #include <stdio.h> int main() { int a[2][2] = {{1, 2}, {3, 4}}; int b[2][2] = {{5, 6}, {7, 8}}; int result[2][2]; for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { result[i][j] = 0; for (int k = 0; k < 2; k++) { result[i][j] += a[i][k] * b[k][j]; } } } printf("Result matrix:\n"); for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { printf("%d ", result[i][j]); } printf("\n"); } return 0; } # Compilation Command gcc matrix.c -o matrix # Execution Command ./matrix ### Python Language Implementation - **Source Code**: ```python a = [[1, 2], [3, 4]] b = [[5, 6], [7, 8]] result = [[0, 0], [0, 0]] for i in range(2): for j in range(2): for k in range(2): result[i][j] += a[i][k] * b[k][j] print("Result matrix:") for row in result: print(" ".join(map(str, row))) # Execution Command python3 matrix.py ## Algorithm Verification - Both implementations were tested using 2x2 matrices: A = [[1, 2], B = [[5, 6], [3, 4]] [7, 8]] - Expected result: [[19, 22], [43, 50]] - Both the C and Python programs output the correct result, confirming the correctness. ## Performance Analysis - **Execution Times**: | Language | Real time | User |System | |----------|---------------------|--------|--------| | C | 0m0.011s |0m0.001s|0m0.002s| | Python | 0m0.106s |0m0.019s|0m0.000s| - **Analysis**: - C is faster due to compilation and lower-level memory management. - Python is slower because of its interpreted nature and dynamic typing. ## Conclusion This project strengthened my skills in: - Using Unix/Linux command line tools effectively. - Writing and formatting technical documentation in Markdown. - Implementing and verifying the same algorithm in both compiled and interpreted languages. ## References GCC Documentation: https://gcc.gnu.org Python Docs: https://docs.python.org/3/ WSL Setup Guide: https://learn.microsoft.com/en-us/windows/wsl/ ## Appendix - All tests were done in a WSL2 Ubuntu environment running on Windows 11. - No external libraries were used.'><meta itemprop=datePublished content="2025-03-20T00:00:00+00:00"><meta itemprop=dateModified content="2025-03-20T00:00:00+00:00"><meta itemprop=wordCount content="385"><meta name=twitter:card content="summary"><meta name=twitter:title content="Matrix Multiplication Project Report"><meta name=twitter:description content='Matrix Multiplication Project Report Student Name: GYILE DENNIS NGMINMAALE
+Student ID: LS2425239
+Submission Date: Mar 20, 2025
+System Configuration Component Specification CPU Model 12th Gen Intel(R) Core(TM) i7-12700H Memory Size 7.6 GiB RAM, 2.0 GiB Swap OS Version Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows) Compiler Version GCC 13.3.0 Python Version Python 3.12.3 Implementation Details C Language Implementation Source Code: #include <stdio.h> int main() { int a[2][2] = {{1, 2}, {3, 4}}; int b[2][2] = {{5, 6}, {7, 8}}; int result[2][2]; for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { result[i][j] = 0; for (int k = 0; k < 2; k++) { result[i][j] += a[i][k] * b[k][j]; } } } printf("Result matrix:\n"); for (int i = 0; i < 2; i++) { for (int j = 0; j < 2; j++) { printf("%d ", result[i][j]); } printf("\n"); } return 0; } # Compilation Command gcc matrix.c -o matrix # Execution Command ./matrix ### Python Language Implementation - **Source Code**: ```python a = [[1, 2], [3, 4]] b = [[5, 6], [7, 8]] result = [[0, 0], [0, 0]] for i in range(2): for j in range(2): for k in range(2): result[i][j] += a[i][k] * b[k][j] print("Result matrix:") for row in result: print(" ".join(map(str, row))) # Execution Command python3 matrix.py ## Algorithm Verification - Both implementations were tested using 2x2 matrices: A = [[1, 2], B = [[5, 6], [3, 4]] [7, 8]] - Expected result: [[19, 22], [43, 50]] - Both the C and Python programs output the correct result, confirming the correctness. ## Performance Analysis - **Execution Times**: | Language | Real time | User |System | |----------|---------------------|--------|--------| | C | 0m0.011s |0m0.001s|0m0.002s| | Python | 0m0.106s |0m0.019s|0m0.000s| - **Analysis**: - C is faster due to compilation and lower-level memory management. - Python is slower because of its interpreted nature and dynamic typing. ## Conclusion This project strengthened my skills in: - Using Unix/Linux command line tools effectively. - Writing and formatting technical documentation in Markdown. - Implementing and verifying the same algorithm in both compiled and interpreted languages. ## References GCC Documentation: https://gcc.gnu.org Python Docs: https://docs.python.org/3/ WSL Setup Guide: https://learn.microsoft.com/en-us/windows/wsl/ ## Appendix - All tests were done in a WSL2 Ubuntu environment running on Windows 11. - No external libraries were used.'></head><body class="ma0 avenir bg-near-white production"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/Dennis_gy/ class="f3 fw2 hover-white white-90 dib no-underline"></a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l mw8 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Reports</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">Matrix Multiplication Project Report</h1><time class="f6 mv4 dib tracked" datetime=2025-03-20T00:00:00Z>March 20, 2025</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id=matrix-multiplication-project-report>Matrix Multiplication Project Report</h1><p><strong>Student Name</strong>: GYILE DENNIS NGMINMAALE<br><strong>Student ID</strong>: LS2425239<br><strong>Submission Date</strong>: Mar 20, 2025</p><h2 id=system-configuration>System Configuration</h2><table><thead><tr><th>Component</th><th>Specification</th></tr></thead><tbody><tr><td><strong>CPU Model</strong></td><td>12th Gen Intel(R) Core(TM) i7-12700H</td></tr><tr><td><strong>Memory Size</strong></td><td>7.6 GiB RAM, 2.0 GiB Swap</td></tr><tr><td><strong>OS Version</strong></td><td>Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows)</td></tr><tr><td><strong>Compiler Version</strong></td><td>GCC 13.3.0</td></tr><tr><td><strong>Python Version</strong></td><td>Python 3.12.3</td></tr></tbody></table><h2 id=implementation-details>Implementation Details</h2><h3 id=c-language-implementation>C Language Implementation</h3><ul><li><strong>Source Code</strong>:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> a[<span style=color:#ae81ff>2</span>][<span style=color:#ae81ff>2</span>] <span style=color:#f92672>=</span> {{<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>}, {<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>}};
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> b[<span style=color:#ae81ff>2</span>][<span style=color:#ae81ff>2</span>] <span style=color:#f92672>=</span> {{<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>}, {<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>}};
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> result[<span style=color:#ae81ff>2</span>][<span style=color:#ae81ff>2</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; j <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>; j<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            result[i][j] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> k <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; k <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>; k<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>                result[i][j] <span style=color:#f92672>+=</span> a[i][k] <span style=color:#f92672>*</span> b[k][j];
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;Result matrix:</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; j <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>; j<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;%d &#34;</span>, result[i][j]);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Compilation Command
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>gcc matrix.c <span style=color:#f92672>-</span>o matrix
+</span></span><span style=display:flex><span><span style=color:#75715e># Execution Command
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>.<span style=color:#f92672>/</span>matrix
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>### Python Language Implementation
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#f92672>-</span> <span style=color:#f92672>**</span>Source Code<span style=color:#f92672>**:</span>
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>```</span>python
+</span></span><span style=display:flex><span>a <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>], [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>]]
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>], [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>]]
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>], [<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>]]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i in <span style=color:#a6e22e>range</span>(<span style=color:#ae81ff>2</span>)<span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> j in <span style=color:#a6e22e>range</span>(<span style=color:#ae81ff>2</span>)<span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> k in <span style=color:#a6e22e>range</span>(<span style=color:#ae81ff>2</span>)<span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>            result[i][j] <span style=color:#f92672>+=</span> a[i][k] <span style=color:#f92672>*</span> b[k][j]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>print</span>(<span style=color:#e6db74>&#34;Result matrix:&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> row in result:
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>print</span>(<span style=color:#e6db74>&#34; &#34;</span>.<span style=color:#a6e22e>join</span>(<span style=color:#a6e22e>map</span>(str, row)))
+</span></span><span style=display:flex><span><span style=color:#75715e># Execution Command
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>python3 matrix.py
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## Algorithm Verification
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#f92672>-</span> Both implementations were tested using <span style=color:#ae81ff>2</span>x2 matrices:
+</span></span><span style=display:flex><span>A <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>],      B <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>],
+</span></span><span style=display:flex><span>     [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>]]           [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>]]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Expected result:
+</span></span><span style=display:flex><span>[[<span style=color:#ae81ff>19</span>, <span style=color:#ae81ff>22</span>],
+</span></span><span style=display:flex><span> [<span style=color:#ae81ff>43</span>, <span style=color:#ae81ff>50</span>]]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Both the C and Python programs output the correct result, confirming the correctness.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## Performance Analysis
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#f92672>-</span>  <span style=color:#f92672>**</span>Execution Times<span style=color:#f92672>**:</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>|</span> Language <span style=color:#f92672>|</span> Real time           <span style=color:#f92672>|</span> User   <span style=color:#f92672>|</span>System  <span style=color:#f92672>|</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>|----------|---------------------|--------|--------|</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>|</span> C        <span style=color:#f92672>|</span> <span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.011</span>s            <span style=color:#f92672>|</span><span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.001</span>s<span style=color:#f92672>|</span><span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.002</span>s<span style=color:#f92672>|</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>|</span> Python   <span style=color:#f92672>|</span> <span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.106</span>s            <span style=color:#f92672>|</span><span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.019</span>s<span style=color:#f92672>|</span><span style=color:#ae81ff>0</span>m0<span style=color:#ae81ff>.000</span>s<span style=color:#f92672>|</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>  <span style=color:#f92672>**</span>Analysis<span style=color:#f92672>**:</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> C is faster due to compilation and lower<span style=color:#f92672>-</span>level memory management.
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Python is slower because of its interpreted nature and dynamic typing.
+</span></span><span style=display:flex><span><span style=color:#75715e>## Conclusion
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>This project strengthened my skills in:
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Using Unix<span style=color:#f92672>/</span>Linux command line tools effectively.
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Writing and formatting technical documentation in Markdown.
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> Implementing and verifying the same algorithm in both compiled and interpreted languages.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## References
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>GCC Documentation: https:<span style=color:#75715e>//gcc.gnu.org
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Python Docs: https:<span style=color:#75715e>//docs.python.org/3/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>WSL Setup Guide: https:<span style=color:#75715e>//learn.microsoft.com/en-us/windows/wsl/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## Appendix
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#f92672>-</span> All tests were done in a WSL2 Ubuntu environment running on Windows <span style=color:#ae81ff>11.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span> No external libraries were used.
+</span></span></code></pre></div><ul class=pa0></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://dennis-1467.github.io/Dennis_gy/>&copy;</a><div><div class=ananke-socials></div></div></div></footer></body></html>

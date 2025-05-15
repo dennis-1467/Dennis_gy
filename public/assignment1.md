@@ -1,8 +1,3 @@
----
-title: "Matrix Multiplication Project Report"
-date: 2025-03-20
----
-
 # Matrix Multiplication Project Report
 
 **Student Name**: GYILE DENNIS NGMINMAALE  
