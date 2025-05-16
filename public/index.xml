@@ -1,5 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title/><link>https://dennis-1467.github.io/Dennis_gy/</link><description>Recent content on</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 20 Apr 2025 12:00:00 +0000</lastBuildDate><atom:link href="https://dennis-1467.github.io/Dennis_gy/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Post</title><link>https://dennis-1467.github.io/Dennis_gy/posts/my-first-post/</link><pubDate>Sun, 20 Apr 2025 12:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/posts/my-first-post/</guid><description>&lt;p>Welcome to my personal blog created with Hugo!&lt;br>
-&lt;a href="https://dennis-1467.github.io/Dennis_gy/reports/assignment1/">Click here&lt;/a> to view my Assignment 1 report.&lt;/p></description></item><item><title>Matrix Multiplication Project Report</title><link>https://dennis-1467.github.io/Dennis_gy/reports/assignment1/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/reports/assignment1/</guid><description>&lt;h1 id="matrix-multiplication-project-report">Matrix Multiplication Project Report&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on</title><link>http://localhost:1313/</link><description>Recent content in Welcome to My Blog on</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 16 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>http://localhost:1313/about/</link><pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/about/</guid><description>&lt;h1 id="-hi-im-dennis">👋 Hi, I&amp;rsquo;m Dennis&lt;/h1>
+&lt;p>Welcome to my personal academic blog!&lt;/p>
+&lt;p>I’m a student passionate about geospatial technology, system development, and AI-powered tools. This blog serves as a documentation hub for my coursework, including assignments, technical projects, and deployment reports.&lt;/p>
+&lt;h2 id="-education">🎓 Education&lt;/h2>
+&lt;ul>
+&lt;li>MSc in [GIS &amp;amp; Remote Sensing], [University of Beihang]&lt;/li>
+&lt;li>Focus: Remote Sensing, Programming, GIS, and Documentation&lt;/li>
+&lt;/ul>
+&lt;h2 id="-tools-i-work-with">🛠 Tools I Work With&lt;/h2>
+&lt;ul>
+&lt;li>Linux (WSL2)&lt;/li>
+&lt;li>Python, C, Hugo, Git&lt;/li>
+&lt;li>Markdown &amp;amp; technical documentation&lt;/li>
+&lt;/ul>
+&lt;h2 id="-links">🌐 Links&lt;/h2>
+&lt;ul>
+&lt;li>GitHub: [dennis-1467/Dennis_gy]&lt;/li>
+&lt;li>Email: [dennisngmin@gmail.com]&lt;/li>
+&lt;/ul></description></item><item><title>Assignment 2: Static Personal Blog Website</title><link>http://localhost:1313/assignments/assignment2/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/assignments/assignment2/</guid><description>&lt;h2 id="-topic-description-blog-deployment-and-git-version-control">📌 Topic Description: Blog Deployment and Git Version Control&lt;/h2>
+&lt;p>This report details:&lt;/p>
+&lt;ul>
+&lt;li>Hugo site setup and deployment with GitHub Pages&lt;/li>
+&lt;li>Git commits and documentation practices&lt;/li>
+&lt;li>Markdown integration&lt;/li>
+&lt;/ul>
+&lt;h1 id="assignment-2-static-blog-website-deployment">Assignment 2: Static Blog Website Deployment&lt;/h1>
+&lt;p>&lt;strong>Student Name&lt;/strong>: GYILE DENNIS NGMINMAALE&lt;br>
+&lt;strong>Student ID&lt;/strong>: LS2425239&lt;br>
+&lt;strong>Submission Date&lt;/strong>: May 15, 2025&lt;/p>
+&lt;hr>
+&lt;h2 id="-objective">🎯 Objective&lt;/h2>
+&lt;p>To set up, customize, and deploy a static personal blog website using Hugo. The project integrates Git for version control and includes documentation of both the deployment process and the integration of previous assignment work.&lt;/p></description></item><item><title>Assignment 1: Command Line &amp; Documentation</title><link>http://localhost:1313/assignments/assignment1/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/assignments/assignment1/</guid><description>&lt;h2 id="-topic-description-matrix-multiplication-in-c-and-python">📌 Topic Description: Matrix Multiplication in C and Python&lt;/h2>
+&lt;p>This report covers:&lt;/p>
+&lt;ul>
+&lt;li>Matrix multiplication in both C and Python&lt;/li>
+&lt;li>System configuration and benchmarking&lt;/li>
+&lt;li>Use of the command line and technical documentation&lt;/li>
+&lt;/ul></description></item><item><title>Matrix Multiplication Project Report</title><link>http://localhost:1313/reports/assignment1/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/reports/assignment1/</guid><description>&lt;h1 id="matrix-multiplication-project-report">Matrix Multiplication Project Report&lt;/h1>
 &lt;p>&lt;strong>Student Name&lt;/strong>: GYILE DENNIS NGMINMAALE&lt;br>
 &lt;strong>Student ID&lt;/strong>: LS2425239&lt;br>
 &lt;strong>Submission Date&lt;/strong>: Mar 20, 2025&lt;/p>

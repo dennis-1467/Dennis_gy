@@ -1,3 +1,20 @@
+---
+title: "Assignment 1: Command Line & Documentation"
+date: 2025-03-20
+image: "/images/assignment1-cover.jpg.png"
+categories: ["Assignments"]
+tags: ["C", "Python", "CLI", "Markdown"]
+---
+
+## 📌 Topic Description: Matrix Multiplication in C and Python
+
+This report covers:
+- Matrix multiplication in both C and Python
+- System configuration and benchmarking
+- Use of the command line and technical documentation
+
+<!--more-->
+
 # Matrix Multiplication Project Report
 
 **Student Name**: GYILE DENNIS NGMINMAALE  
@@ -47,7 +64,7 @@ int main() {
     }
     return 0;
 }
-
+```
 # Compilation Command
 gcc matrix.c -o matrix
 # Execution Command
@@ -68,6 +85,7 @@ for i in range(2):
 print("Result matrix:")
 for row in result:
     print(" ".join(map(str, row)))
+```
 # Execution Command
 python3 matrix.py
 
@@ -106,4 +124,8 @@ WSL Setup Guide: https://learn.microsoft.com/en-us/windows/wsl/
 ## Appendix
 - All tests were done in a WSL2 Ubuntu environment running on Windows 11.
 - No external libraries were used.
+
+📄 **Download as PDF**  
+👉 [Click here to download Assignment 1 PDF](/downloads/assignment1-report.pdf)
+
 

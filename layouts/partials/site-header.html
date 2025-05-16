@@ -1,0 +1,21 @@
+<header class="bg-white bb b--light-gray pv3 ph4 ph5-ns">
+
+  <div class="flex items-center justify-between">
+    <h1 class="f4 ma0">
+      <a href="/" class="link near-black dim">Dennis' Blog</a>
+    </h1>
+
+    {{ with .Site.Menus.main }}
+    <nav class="dn db-ns">
+      <ul class="list flex ma0 pa0">
+        {{ range . }}
+        <li class="ml3">
+          <a class="link dark-gray dim f6 f5-ns" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+    {{ end }}
+  </div>
+
+</header>
