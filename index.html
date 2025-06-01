@@ -1,2 +1,524 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title></title>
-<meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content><meta name=generator content="Hugo 0.147.1"><meta name=robots content="index, follow"><link rel=stylesheet href=./Dennis_gy/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css><link href=./index.xml rel=alternate type=application/rss+xml title><link href=./index.xml rel=feed type=application/rss+xml title><link rel=canonical href=https://dennis-1467.github.io/Dennis_gy/><meta property="og:url" content="https://dennis-1467.github.io/Dennis_gy/"><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta name=twitter:card content="summary"></head><body class="ma0 avenir bg-near-white production"><header><div class="pb3-m pb6-l bg-black"><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=./ class="f3 fw2 hover-white white-90 dib no-underline"></a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav><div class="tc-l pv3 ph3 ph4-ns"><h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title"></h1></div></div></header><main class=pb7 role=main><article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://dennis-1467.github.io/Dennis_gy/>&copy;</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dennis' Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            margin-top: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .assignment-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .assignment-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .card-title {
+            flex: 1;
+        }
+
+        .card-title h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .card-title .topic {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status.completed {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .status.in-progress {
+            background: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+
+        .view-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .files-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .files-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .file-details h4 {
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .file-date {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assignment-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">Dennis' Blog</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#assignments">Assignments</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#tags">Tags</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>👋 Hi, I'm Dennis</h1>
+                <p>Welcome to my academic blog! Here, I document coursework, development projects, and reports with modern design and organized presentation.</p>
+            </div>
+        </header>
+
+        <div class="section-title">
+            <h2>📚 My Assignments</h2>
+            <p>Explore my academic projects and development work</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="assignment-card">
+                <div class="card-header">
+                    <div class="assignment-number">1</div>
+                    <div class="card-title">
+                        <h3>Command Line & Documentation</h3>
+                        <div class="topic">Matrix Multiplication in C and Python</div>
+                    </div>
+                </div>
+                
+                <div class="card-description">
+                    This report covers matrix multiplication implementation in both C and Python, demonstrating performance comparisons and optimization techniques.
+                </div>
+                
+                <div class="card-tags">
+                    <span class="tag">C Programming</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Algorithms</span>
+                    <span class="tag">Performance</span>
+                </div>
+                
+                <div class="card-footer">
+                    <span class="status completed">Completed</span>
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="assignment-card">
+                <div class="card-header">
+                    <div class="assignment-number">2</div>
+                    <div class="card-title">
+                        <h3>Static Personal Blog Website</h3>
+                        <div class="topic">Blog Deployment and Git Version Control</div>
+                    </div>
+                </div>
+                
+                <div class="card-description">
+                    Set up, customize, and deploy a static personal blog website using Hugo. The project integrates Git for version control and includes documentation of the deployment process.
+                </div>
+                
+                <div class="card-tags">
+                    <span class="tag">Hugo</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub Pages</span>
+                    <span class="tag">Markdown</span>
+                    <span class="tag">Web Development</span>
+                </div>
+                
+                <div class="card-footer">
+                    <span class="status completed">Completed</span>
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="assignment-card">
+                <div class="card-header">
+                    <div class="assignment-number">3</div>
+                    <div class="card-title">
+                        <h3>Deployment and Integration of LLM</h3>
+                        <div class="topic">Large Language Model Implementation</div>
+                    </div>
+                </div>
+                
+                <div class="card-description">
+                    Advanced project focusing on deploying and integrating Large Language Models into practical applications with performance optimization.
+                </div>
+                
+                <div class="card-tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">LLM</span>
+                    <span class="tag">API Integration</span>
+                    <span class="tag">Cloud Deployment</span>
+                </div>
+                
+                <div class="card-footer">
+                    <span class="status in-progress">In Progress</span>
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="assignment-card">
+                <div class="card-header">
+                    <div class="assignment-number">4</div>
+                    <div class="card-title">
+                        <h3>Developing an Application with LLM</h3>
+                        <div class="topic">AI-Powered Application Development</div>
+                    </div>
+                </div>
+                
+                <div class="card-description">
+                    Building a complete application that leverages Large Language Model capabilities to solve real-world problems with intuitive user interfaces.
+                </div>
+                
+                <div class="card-tags">
+                    <span class="tag">Application Development</span>
+                    <span class="tag">AI Integration</span>
+                    <span class="tag">User Interface</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+                
+                <div class="card-footer">
+                    <span class="status in-progress">In Progress</span>
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="files-section">
+            <h3>📄 View Raw Markdown Files</h3>
+            <div class="file-list">
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h4>Assignment 1</h4>
+                            <div class="file-date">Command Line & Documentation</div>
+                        </div>
+                    </div>
+                    <a href="#" class="view-btn">Open File</a>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h4>Assignment 2</h4>
+                            <div class="file-date">Fri May 16 14:54:35 CST 2025</div>
+                        </div>
+                    </div>
+                    <a href="#" class="view-btn">Open File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for cards
+        const cards = document.querySelectorAll('.assignment-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+EOF

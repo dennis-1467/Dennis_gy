@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Dennis' Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-nav {
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-info .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .profile-info .date {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .education-item {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-item h4 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .education-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .tool-item {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 12px 16px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tool-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .link-details h4 {
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .link-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-nav">
+            <a href="/" class="back-btn">
+                ← Back to Home
+            </a>
+        </div>
+
+        <div class="about-header fade-in">
+            <div class="profile-section">
+                <div class="profile-image">
+                    👋
+                </div>
+                <div class="profile-info">
+                    <h1>Hi, I'm Dennis</h1>
+                    <div class="subtitle">Welcome to my Blog</div>
+                    <div class="date">May 16, 2025</div>
+                </div>
+            </div>
+            
+            <div class="intro-text">
+                I am a motivated and passionate individual currently pursuing my master's program in GIS and Remote Sensing. I'm dedicated to advancing knowledge and skills in spatial analysis, remote sensing, to contribute to environmental conservation and urban planning. This blog serves as a documentation hub for my coursework, technical projects, and deployment reports showcasing my journey through geospatial technology.
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">🎓</div>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                
+                <div class="education-item">
+                    <h4>MSc in Space Technology Application (Major Remote Sensing & GIS)</h4>
+                    <p><strong>Beihang University, China</strong></p>
+                    <p>2024-2026 | Current Studies in Advanced Remote Sensing, Spatial Analysis, and Geospatial Technology Applications</p>
+                </div>
+                
+                <div class="education-item">
+                    <h4>BSc in Natural Resources Management</h4>
+                    <p><strong>University of Energy and Natural Resources (Sunyani Campus)</strong></p>
+                    <p>2019-2022 | Focus: Applied GIS & RS, Spatial Analysis, Land Reclamation & Restoration Practices, Landscape Ecology & Design</p>
+                </div>
+                
+                <div class="education-item">
+                    <h4>Diploma in Geo-information Science</h4>
+                    <p><strong>University of Energy and Natural Resources (Dormaa Campus)</strong></p>
+                    <p>2017-2019 | Focus: Introduction to GIS & RS, Surveying, Photogrammetry, Introduction to Climate Change</p>
+                </div>
+            </div>
+
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">💼</div>
+                    <h2 class="section-title">Work Experience</h2>
+                </div>
+                
+                <div class="education-item">
+                    <h4>Research Assistant / Teaching Assistant</h4>
+                    <p><strong>University of Energy and Natural Resources (Sunyani Campus)</strong></p>
+                    <p>Currently (National Service) | Assisting students with project work and thesis, conducting spatial analysis and creating thematic maps using ArcGIS</p>
+                </div>
+                
+                <div class="education-item">
+                    <h4>GIS Analyst</h4>
+                    <p><strong>Forest Service Division - Sunyani District Ghana</strong></p>
+                    <p>June - December 2021 (Industrial Attachment) | Conducted spatial analysis, created thematic maps using ArcGIS, collaborated in field data collection using GPS</p>
+                </div>
+            </div>
+
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">🛠️</div>
+                    <h2 class="section-title">Technical Skills</h2>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-item">ArcGIS</div>
+                    <div class="tool-item">Google Earth Pro</div>
+                    <div class="tool-item">QGIS</div>
+                    <div class="tool-item">ArcGIS Pro</div>
+                    <div class="tool-item">Google Earth Engine</div>
+                    <div class="tool-item">Python</div>
+                    <div class="tool-item">JavaScript</div>
+                    <div class="tool-item">Microsoft Office</div>
+                    <div class="tool-item">SPSS</div>
+                    <div class="tool-item">Hugo</div>
+                    <div class="tool-item">Git</div>
+                    <div class="tool-item">Markdown</div>
+                </div>
+            </div>
+
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">🏆</div>
+                    <h2 class="section-title">Certifications & Training</h2>
+                </div>
+                
+                <div class="education-item">
+                    <h4>ChatGPT in QGIS with QChatGPT Plugin</h4>
+                    <p><strong>African Women in GIS</strong></p>
+                    <p>March 25, 2023 | "Embracing AI in the Geospatial Field" workshop</p>
+                </div>
+                
+                <div class="education-item">
+                    <h4>Data Analysis Using SPSS</h4>
+                    <p><strong>Department of MBA, IMS, Bengaluru</strong></p>
+                    <p>February 8, 2023 | Faculty Development Programme</p>
+                </div>
+            </div>
+
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">🌐</div>
+                    <h2 class="section-title">Contact & Links</h2>
+                </div>
+                
+                <div class="links-container">
+                    <a href="https://github.com/dennis-1467/Dennis_gy" class="link-item">
+                        <div class="link-icon">📂</div>
+                        <div class="link-details">
+                            <h4>GitHub</h4>
+                            <p>dennis-1467/Dennis_gy</p>
+                        </div>
+                    </a>
+                    
+                    <a href="mailto:dennisngmin@gmail.com" class="link-item">
+                        <div class="link-icon">📧</div>
+                        <div class="link-details">
+                            <h4>Email</h4>
+                            <p>dennisngmin@gmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://facebook.com/dennis.gyile" class="link-item">
+                        <div class="link-icon">📱</div>
+                        <div class="link-details">
+                            <h4>Facebook</h4>
+                            <p>Dennis Gyile</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://twitter.com/DGyile" class="link-item">
+                        <div class="link-icon">🐦</div>
+                        <div class="link-details">
+                            <h4>Twitter</h4>
+                            <p>@DGyile</p>
+                        </div>
+                    </a>
+                    
+                    <a href="tel:+233200024425" class="link-item">
+                        <div class="link-icon">📞</div>
+                        <div class="link-details">
+                            <h4>Phone</h4>
+                            <p>+233200024425</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-card fade-in">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <h2 class="section-title">Interests & Hobbies</h2>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-item">Movies</div>
+                    <div class="tool-item">Football</div>
+                    <div class="tool-item">Music</div>
+                    <div class="tool-item">Church Activities</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section fade-in">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2 class="section-title">My Academic Journey</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Assignments</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Technical Skills</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Passion</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add staggered fade-in animation
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.tool-item').forEach(tool => {
+            tool.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            tool.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effect to stat items
+        document.querySelectorAll('.stat-item').forEach(stat => {
+            stat.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

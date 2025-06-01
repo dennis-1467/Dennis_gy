@@ -1,0 +1,171 @@
+{{ define "main" }}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .main-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #667eea;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+    .back-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .assignment-header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    .assignment-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    .assignment-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .assignment-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    .meta-item {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    .assignment-content {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        line-height: 1.7;
+    }
+    .assignment-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    .assignment-content h2 {
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+    }
+    .assignment-content h3 {
+        color: #667eea;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+    }
+    .assignment-content p {
+        color: #555;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+    .assignment-content ul, .assignment-content ol {
+        color: #555;
+        margin-bottom: 15px;
+        padding-left: 25px;
+    }
+    .assignment-content li {
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+    }
+    .assignment-content code {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+    }
+    .assignment-content pre {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        border-left: 4px solid #667eea;
+        margin: 20px 0;
+    }
+    .assignment-content strong {
+        color: #333;
+        font-weight: 600;
+    }
+    @media (max-width: 768px) {
+        .assignment-header h1 {
+            font-size: 2rem;
+        }
+        .assignment-content {
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="main-content">
+    <a href="/" class="back-btn">← Back to Home</a>
+    
+    <div class="assignment-header">
+        <h1>{{ .Title }}</h1>
+        <div class="assignment-meta">
+            <div class="meta-item">📅 {{ .Date.Format "January 2, 2006" }}</div>
+            {{ range .Params.tags }}
+            <div class="meta-item"># {{ . }}</div>
+            {{ end }}
+            {{ range .Params.categories }}
+            <div class="meta-item">📂 {{ . }}</div>
+            {{ end }}
+        </div>
+    </div>
+    
+    <div class="assignment-content">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}

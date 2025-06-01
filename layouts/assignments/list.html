@@ -1,0 +1,209 @@
+{{ define "main" }}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #667eea;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .page-header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .page-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .assignments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+    .assignment-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+    }
+    .assignment-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    .assignment-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        text-decoration: none;
+        color: inherit;
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .assignment-number {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+    .card-title h3 {
+        font-size: 1.4rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    .card-description {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .tag {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+    }
+    .date {
+        color: #999;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="main-content">
+    <a href="/" class="back-btn">← Back to Home</a>
+    
+    <div class="page-header">
+        <h1>📚 My Assignments</h1>
+        <p>A comprehensive collection of my academic projects, technical implementations, and development work showcasing skills in programming, deployment, and AI integration.</p>
+    </div>
+    
+    <div class="assignments-grid">
+        {{ range .Pages.ByWeight }}
+        <a href="{{ .RelPermalink }}" class="assignment-card">
+            <div class="card-header">
+                <div class="assignment-number">
+                    {{ if eq .File.BaseFileName "assignment1" }}1
+                    {{ else if eq .File.BaseFileName "assignment2" }}2
+                    {{ else if eq .File.BaseFileName "assignment3" }}3
+                    {{ else if eq .File.BaseFileName "assignment4" }}4
+                    {{ else }}•{{ end }}
+                </div>
+                <div class="card-title">
+                    <h3>{{ .Title }}</h3>
+                </div>
+            </div>
+            
+            <div class="card-description">
+                {{ if .Params.description }}
+                {{ .Params.description }}
+                {{ else }}
+                {{ .Summary | truncate 150 }}
+                {{ end }}
+            </div>
+            
+            <div class="card-tags">
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            
+            <div class="card-footer">
+                <span class="status">Completed</span>
+                <div class="date">{{ .Date.Format "Jan 2, 2006" }}</div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
