@@ -1,5 +1,7 @@
-baseURL = "http://localhost:1313/"
-theme = "ananke"
+baseURL = 'https://dennis-1467.github.io/Dennis_gy'
+languageCode = 'en-us'
+title = "Dennis' Blog"
+theme = 'ananke'
 
 [params]
   background_color_class = "bg-washed-blue"
@@ -12,28 +14,22 @@ theme = "ananke"
     dir = ":cacheDir/images"
 
 [menu]
-
   [[menu.main]]
   name = "Home"
   url = "/"
   weight = 1
-
+  
   [[menu.main]]
   name = "Assignments"
   url = "/assignments/"
   weight = 2
-
+  
   [[menu.main]]
   name = "About"
   url = "/about/"
   weight = 3
-
- [[menu.main]]
- name = "Tags"
- url = "/tags/"
- weight = 4
-
- [[menu.main]]
- name = "Categories"
- url = "/categories/"
- weight = 5
+  
+  [[menu.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 4
