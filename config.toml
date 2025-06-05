@@ -1,32 +1,41 @@
-baseURL = 'https://dennis-1467.github.io/Dennis_gy/'
-languageCode = 'en-us'
-title = "Dennis' Blog"
-theme = 'ananke'
+baseURL        = "https://dennis-1467.github.io/Dennis_gy/"
+languageCode   = "en-us"
+title          = "Dennis' Blog"
+theme          = "ananke"
+
+# Ensure every internal link is rendered as an absolute URL
+canonifyURLs   = true
+relativeURLs   = false
 
 [params]
   background_color_class = "bg-washed-blue"
-  text_color_class = "dark-gray"
-  primary_color = "dark-blue"
-  font = "system-sans-serif"
+  text_color_class       = "dark-gray"
+  primary_color          = "dark-blue"
+  font                   = "system-sans-serif"
 
 [caches]
   [caches.images]
     dir = ":cacheDir/images"
 
 [menu]
+
   [[menu.main]]
-  name = "Home"
-  url = ""
-  weight = 1
+    name   = "Home"
+    url    = ""
+    weight = 1
+
   [[menu.main]]
-  name = "Assignments"
-  url = "assignments/"
-  weight = 2
+    name   = "Assignments"
+    url    = "assignments/"
+    weight = 2
+
   [[menu.main]]
-  name = "About"
-  url = "about/"
-  weight = 3
+    name   = "About"
+    url    = "about/"
+    weight = 3
+
   [[menu.main]]
-  name = "Tags"
-  url = "tags/"
-  weight = 4
+    name   = "Tags"
+    url    = "tags/"
+    weight = 4
+
