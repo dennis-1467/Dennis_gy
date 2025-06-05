@@ -1,4 +1,4 @@
-baseURL = 'https://dennis-1467.github.io/Dennis_gy'
+baseURL = 'https://dennis-1467.github.io/Dennis_gy/'
 languageCode = 'en-us'
 title = "Dennis' Blog"
 theme = 'ananke'
@@ -16,20 +16,17 @@ theme = 'ananke'
 [menu]
   [[menu.main]]
   name = "Home"
-  url = "/"
+  url = ""
   weight = 1
-  
   [[menu.main]]
   name = "Assignments"
-  url = "/assignments/"
+  url = "assignments/"
   weight = 2
-  
   [[menu.main]]
   name = "About"
-  url = "/about/"
+  url = "about/"
   weight = 3
-  
   [[menu.main]]
   name = "Tags"
-  url = "/tags/"
+  url = "tags/"
   weight = 4
