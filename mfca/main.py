@@ -7,12 +7,18 @@ from mfca.preprocess import check_raster_compatibility
 from mfca.classify import classify
 from mfca.change import detect_change
 
+
 @click.command()
-@click.option("--polygons", "poly_path", required=True, type=click.Path(exists=True), help="Path to vector file (GeoPackage or Shapefile)")
-@click.option("--raster-a", "raster_a", required=True, type=click.Path(exists=True), help="Path to first raster (GeoTIFF)")
-@click.option("--raster-b", "raster_b", required=True, type=click.Path(exists=True), help="Path to second raster (GeoTIFF)")
-@click.option("--aoi", default="GHA", show_default=True, help="ISO-3 code for the area of interest")
-@click.option("--dry-run", "dry_run", is_flag=True, help="Show planned actions without executing classifier or change detection")
+@click.option("--polygons", "poly_path", required=True, type=click.Path(exists=True), 
+              help="Path to vector file (GeoPackage or Shapefile)")
+@click.option("--raster-a", "raster_a", required=True, type=click.Path(exists=True), 
+              help="Path to first raster (GeoTIFF)")
+@click.option("--raster-b", "raster_b", required=True, type=click.Path(exists=True), 
+              help="Path to second raster (GeoTIFF)")
+@click.option("--aoi", default="GHA", show_default=True, 
+              help="ISO-3 code for the area of interest")
+@click.option("--dry-run", "dry_run", is_flag=True, 
+              help="Show planned actions without executing classifier or change detection")
 def main(poly_path: str, raster_a: str, raster_b: str, aoi: str, dry_run: bool) -> None:
     """Mine-Footprint Change Analyzer CLI."""
     # Load and validate polygons
@@ -50,9 +56,16 @@ def main(poly_path: str, raster_a: str, raster_b: str, aoi: str, dry_run: bool) 
     # Normal execution: classify and detect change
     class_a = classify(ra, sub_polys)
     class_b = classify(rb, sub_polys)
-    detect_change(class_a, class_b, sub_polys)
+    change_mask = detect_change(class_a, class_b, sub_polys)
+    
+    # Report a simple summary
+    num_pixels = class_a.size
+    num_changed = int(change_mask.sum())
+    click.echo(f"Total pixels classified: {num_pixels}")
+    click.echo(f"Pixels changed: {num_changed} ({num_changed/num_pixels:.1%})")
 
-    click.echo(click.style("Processing complete.", fg="green"))
+    click.echo(click.style("Analysis complete.", fg="green"))
+
 
 if __name__ == "__main__":
     main()
