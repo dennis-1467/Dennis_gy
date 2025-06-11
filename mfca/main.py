@@ -1,24 +1,20 @@
 import sys
+import os
 import click
 import rasterio
 import geopandas as gpd
+import pandas as pd
 from mfca.io import load_vector
 from mfca.preprocess import check_raster_compatibility
 from mfca.classify import classify
-from mfca.change import detect_change
-
+from mfca.change import detect_change, summarize_change_by_polygon
 
 @click.command()
-@click.option("--polygons", "poly_path", required=True, type=click.Path(exists=True), 
-              help="Path to vector file (GeoPackage or Shapefile)")
-@click.option("--raster-a", "raster_a", required=True, type=click.Path(exists=True), 
-              help="Path to first raster (GeoTIFF)")
-@click.option("--raster-b", "raster_b", required=True, type=click.Path(exists=True), 
-              help="Path to second raster (GeoTIFF)")
-@click.option("--aoi", default="GHA", show_default=True, 
-              help="ISO-3 code for the area of interest")
-@click.option("--dry-run", "dry_run", is_flag=True, 
-              help="Show planned actions without executing classifier or change detection")
+@click.option("--polygons", "poly_path", required=True, type=click.Path(exists=True), help="Path to vector file (GeoPackage or Shapefile)")
+@click.option("--raster-a", "raster_a", required=True, type=click.Path(exists=True), help="Path to first raster (GeoTIFF)")
+@click.option("--raster-b", "raster_b", required=True, type=click.Path(exists=True), help="Path to second raster (GeoTIFF)")
+@click.option("--aoi", "aoi", default="GHA", show_default=True, help="ISO-3 code for area of interest")
+@click.option("--dry-run", "dry_run", is_flag=True, help="Show planned actions without executing classifier or change detection")
 def main(poly_path: str, raster_a: str, raster_b: str, aoi: str, dry_run: bool) -> None:
     """Mine-Footprint Change Analyzer CLI."""
     # Load and validate polygons
@@ -57,15 +53,16 @@ def main(poly_path: str, raster_a: str, raster_b: str, aoi: str, dry_run: bool) 
     class_a = classify(ra, sub_polys)
     class_b = classify(rb, sub_polys)
     change_mask = detect_change(class_a, class_b, sub_polys)
-    
-    # Report a simple summary
-    num_pixels = class_a.size
-    num_changed = int(change_mask.sum())
-    click.echo(f"Total pixels classified: {num_pixels}")
-    click.echo(f"Pixels changed: {num_changed} ({num_changed/num_pixels:.1%})")
+
+    # Summarize change per polygon
+    summary_gdf = summarize_change_by_polygon(change_mask, sub_polys, ra.transform)
+
+    # Export CSV summary
+    out_csv = os.path.splitext(poly_path)[0] + "_change_summary.csv"
+    summary_gdf.drop(columns="geometry").to_csv(out_csv, index=False)
+    click.echo(f"Per-polygon summary written to {out_csv}")
 
     click.echo(click.style("Analysis complete.", fg="green"))
-
 
 if __name__ == "__main__":
     main()
