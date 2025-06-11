@@ -1,0 +1,6 @@
+pyproject.toml
+mfca/mfca.egg-info/PKG-INFO
+mfca/mfca.egg-info/SOURCES.txt
+mfca/mfca.egg-info/dependency_links.txt
+mfca/mfca.egg-info/top_level.txt
+tests/test_io.py
