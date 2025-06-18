@@ -1,0 +1,32 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data files
+*.tif
+*.ovr
+data/samples/
+
+# Build artifacts - these are huge!
+build/
+dist/
+*.egg-info/
+
+# Large database files
+*.dbf
+*.shp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Static files
+static/
+
+# Allow only small documentation images
+!docs/images/*.jpg
+!docs/images/*.png
