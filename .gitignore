@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Virtual environment
 .venv/
 
@@ -10,28 +9,27 @@ __pycache__/
 # Large data files
 *.tif
 *.ovr
+
+# Sample data
 data/samples/
 
-# Build artifacts - these are huge!
+# Build artifacts
 build/
 dist/
 *.egg-info/
 
-# Large database files
+# Databases and shapefiles
 *.dbf
 *.shp
 
-# OS files
+# Operating-system junk
 .DS_Store
 Thumbs.db
 
-# Static files
-static/
-
-# Allow only small documentation images
-!docs/images/*.jpg
-!docs/images/*.png
-=======
+# Static site output
 public/
 resources/
->>>>>>> Stashed changes
+
+# Project static assets remain tracked
+!static/
+
