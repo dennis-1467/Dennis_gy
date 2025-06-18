@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Virtual environment
 .venv/
 
@@ -30,3 +31,7 @@ static/
 # Allow only small documentation images
 !docs/images/*.jpg
 !docs/images/*.png
+=======
+public/
+resources/
+>>>>>>> Stashed changes
