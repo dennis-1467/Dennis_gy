@@ -160,26 +160,26 @@ The MFCA software successfully processed satellite imagery of mining areas in Gh
 
 #### Full Satellite Imagery Comparison (2015 vs 2024)
 
-![2015 Satellite Image](/images/mfca/before_image_2015.jpg)
+![2015 Satellite Image](../../images/mfca/before_image_2015.jpg)
 *Image 1: 2015 Satellite Imagery - Full extent satellite image showing the Ghana mining region with predominantly natural vegetation coverage and forest areas. The image displays the baseline conditions before significant mining expansion, covering regions around Techiman, Sunyani, and surrounding areas.*
 
-![2024 Satellite Image](/images/mfca/after_image_2024.jpg)
+![2024 Satellite Image](../../images/mfca/after_image_2024.jpg)
 *Image 2: 2024 Satellite Imagery - Same geographic area nine years later showing dramatic surface modifications. Notable changes include extensive land cover alterations, increased exposed soil areas, and clear evidence of mining activity expansion across the landscape.*
 
 #### Binary Classification Results
 
-![2015 Classification Labels](/images/mfca/before_clip_labels.jpg)
+![2015 Classification Labels](../../images/mfca/before_clip_labels.jpg)
 *Image 5: 2015 Binary Classification Labels - Black areas represent non-mining regions while white areas show detected mining activity based on the clipped study area. The sparse white patches indicate limited mining operations in 2015, corresponding to the 4.2% mining classification.*
 
-![2024 Classification Labels](/images/mfca/after_clip_labels.jpg)
+![2024 Classification Labels](../../images/mfca/after_clip_labels.jpg)
 *Image 6: 2024 Binary Classification Labels - Same classification scheme where black represents non-mining and white represents detected mining areas. The extensive white coverage demonstrates the dramatic expansion of mining activity by 2024, corresponding to the 96.3% mining classification.*
 
 #### Clipped Study Area Analysis
 
-![2015 Clipped Area](/images/mfca/before_clip_image.jpg)
+![2015 Clipped Area](../../images/mfca/before_clip_image.jpg)
 *Image 3: 2015 Clipped Study Area - Focused view of the specific mining study region showing sparse blue areas representing 4.2% of pixels classified as mining activity. The limited mining footprint reflects the baseline mining operations in 2015.*
 
-![2024 Clipped Area](/images/mfca/after_clip_image.jpg)
+![2024 Clipped Area](../../images/mfca/after_clip_image.jpg)
 *Image 4: 2024 Clipped Study Area - Same clipped region showing extensive blue coverage representing 96.3% of pixels classified as mining activity. The dramatic transformation demonstrates massive mining expansion over the 9-year period from 2015 to 2024.*
 
 **Classification Legend:**
@@ -197,12 +197,12 @@ The following screenshots demonstrate the MFCA software in action, showing both 
 
 #### Installation and Setup
 
-![MFCA Installation](/images/mfca/installation_demo.jpg)
+![MFCA Installation](../../images/mfca/installation_demo.jpg)
 *Image 7: MFCA Installation Process - Terminal screenshot showing the complete installation workflow including virtual environment activation, pip installation in editable mode, successful build completion, and help command display. The installation demonstrates the software's professional packaging with proper dependency management and CLI interface.*
 
 #### Real-Time Analysis Execution
 
-![MFCA Analysis Output](/images/mfca/live_analysis_demo.jpg)
+![MFCA Analysis Output](../../images/mfca/live_analysis_demo.jpg)
 *Image 8: Live Analysis Execution - Terminal output showing the MFCA software processing the Ghana mining dataset in real-time. Key metrics visible include threshold calculation (1795.5287), classification results (4.2% vs 96.3% positive pixels), data validation ranges, and successful completion with CSV export.*
 
 **Key Demonstration Features:**
