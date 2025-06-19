@@ -1,0 +1,811 @@
+{{ define "main" }}
+<div class="homepage-content">
+    <div class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <h1 class="typewriter">{{ .Site.Title }}</h1>
+        <p class="hero-subtitle fade-in">Course Assignments & Technical Documentation</p>
+        <div class="hero-badge pulse">All Assignments Completed ✓</div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">↓</div>
+            <span>Explore My Work</span>
+        </div>
+    </div>
+    
+    <div class="stats-section">
+        <div class="stat-item" data-count="4">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Assignments</span>
+        </div>
+        <div class="stat-item" data-count="100">
+            <span class="stat-number">0</span>
+            <span class="stat-label">% Complete</span>
+        </div>
+        <div class="stat-item" data-count="8">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-item" data-count="50">
+            <span class="stat-number">0</span>
+            <span class="stat-label">+ Hours</span>
+        </div>
+    </div>
+    
+    <div class="cards-container">
+        <div class="card assignment-1" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-header">
+                <div class="assignment-number">01</div>
+                <div class="assignment-info">
+                    <h3>Command Line & Documentation</h3>
+                    <span class="assignment-subtitle">Fundamentals & Best Practices</span>
+                </div>
+                <div class="completion-badge">✓</div>
+            </div>
+            <div class="card-body">
+                <p>Master command line fundamentals and learn proper documentation practices for development workflows. Includes Git version control, terminal operations, and technical writing.</p>
+                <div class="assignment-meta">
+                    <span class="status status-completed">✅ Completed</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">Markdown</span>
+                    </div>
+                </div>
+                <a href="/assignments/assignment1/" class="card-link">
+                    <span>View Assignment</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="card assignment-2" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-header">
+                <div class="assignment-number">02</div>
+                <div class="assignment-info">
+                    <h3>Static Personal Blog Website</h3>
+                    <span class="assignment-subtitle">Modern Web Development</span>
+                </div>
+                <div class="completion-badge">✓</div>
+            </div>
+            <div class="card-body">
+                <p>Create and deploy a static blog website using modern web technologies and best practices. Features responsive design, Hugo static site generator, and deployment automation.</p>
+                <div class="assignment-meta">
+                    <span class="status status-completed">✅ Completed</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Hugo</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                <a href="/assignments/assignment2/" class="card-link">
+                    <span>View Assignment</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="card assignment-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-header">
+                <div class="assignment-number">03</div>
+                <div class="assignment-info">
+                    <h3>Deployment & Integration of LLM</h3>
+                    <span class="assignment-subtitle">AI Integration & APIs</span>
+                </div>
+                <div class="completion-badge">✓</div>
+            </div>
+            <div class="card-body">
+                <p>Deploy and integrate Large Language Models into applications with proper API management, authentication, and user interface design for seamless AI interactions.</p>
+                <div class="assignment-meta">
+                    <span class="status status-completed">✅ Completed</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Auth</span>
+                    </div>
+                </div>
+                <a href="/assignments/assignment3/" class="card-link">
+                    <span>View Assignment</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="card assignment-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="card-header">
+                <div class="assignment-number">04</div>
+                <div class="assignment-info">
+                    <h3>Application Development with LLM Aid</h3>
+                    <span class="assignment-subtitle">AI-Assisted Development</span>
+                </div>
+                <div class="completion-badge">✓</div>
+            </div>
+            <div class="card-body">
+                <p>Build a complete application leveraging LLM assistance for enhanced development workflows. Features geospatial analysis, mining change detection, and comprehensive technical documentation.</p>
+                <div class="assignment-meta">
+                    <span class="status status-completed">✅ Completed</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">GIS</span>
+                        <span class="tech-tag">AI</span>
+                    </div>
+                </div>
+                <a href="/assignments/assignment4/" class="card-link">
+                    <span>View Assignment</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="summary-section" data-aos="fade-up" data-aos-delay="500">
+        <div class="summary-card">
+            <h3>🎯 Course Journey</h3>
+            <p>Successfully completed all four assignments covering command line tools, web development, AI integration, and application development. Each project demonstrates progressive skill building and practical application of modern development practices.</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <span class="progress-text">100% Complete</span>
+            </div>
+            <div class="skills-grid">
+                <span class="skill-tag" data-skill="cli">Command Line</span>
+                <span class="skill-tag" data-skill="git">Git & Documentation</span>
+                <span class="skill-tag" data-skill="web">Hugo & Static Sites</span>
+                <span class="skill-tag" data-skill="llm">LLM Integration</span>
+                <span class="skill-tag" data-skill="python">Python Development</span>
+                <span class="skill-tag" data-skill="gis">Geospatial Analysis</span>
+                <span class="skill-tag" data-skill="api">API Development</span>
+                <span class="skill-tag" data-skill="ai">AI-Assisted Coding</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section" data-aos="fade-up" data-aos-delay="600">
+        <div class="contact-card">
+            <h3>👋 Let's Connect</h3>
+            <p>Interested in my work? Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:dennisngmin@gmail.com" class="contact-link email">
+                    <span class="icon">📧</span>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/dennis-1467/Dennis_gy.git" class="contact-link github" target="_blank">
+                    <span class="icon">🔗</span>
+                    <span>GitHub</span>
+                </a>
+                <a href="tel:+233200024425" class="contact-link phone">
+                    <span class="icon">📱</span>
+                    <span>Phone</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.homepage-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Hero Section with Animations */
+.hero-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    left: 80%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Typewriter Effect */
+.typewriter {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    animation: typewriter 3s steps(20) 1s both, blink 1s step-end infinite;
+}
+
+@keyframes typewriter {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: white; }
+    51%, 100% { border-color: transparent; }
+}
+
+.fade-in {
+    animation: fadeInUp 1s ease 2s both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.scroll-arrow {
+    font-size: 1.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* Stats Section */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Enhanced Cards */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.assignment-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    opacity: 0.8;
+    line-height: 1;
+}
+
+.assignment-info {
+    flex: 1;
+}
+
+.assignment-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.assignment-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+.completion-badge {
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-body p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.assignment-meta {
+    margin-bottom: 1.5rem;
+}
+
+.status {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.status-completed {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.05);
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.card-link:hover::before {
+    left: 100%;
+}
+
+.card-link:hover {
+    background: #667eea;
+    color: white;
+    transform: translateX(4px);
+}
+
+/* Enhanced Summary Section */
+.summary-section {
+    margin-top: 4rem;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 4px;
+    width: 0%;
+    animation: fillProgress 2s ease-in-out 1s forwards;
+}
+
+@keyframes fillProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.progress-text {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    font-size: 0.9rem;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.skill-tag {
+    background: #667eea;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.skill-tag:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 4rem;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* AOS Animation Attributes */
+[data-aos] {
+    transition: all 0.6s ease;
+}
+
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .homepage-content {
+        padding: 1rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .typewriter {
+        font-size: 2rem;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .typewriter {
+        font-size: 1.5rem;
+    }
+    
+    .card-header {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Counter Animation
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-item');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.dataset.count);
+        const numberElement = counter.querySelector('.stat-number');
+        let current = 0;
+        const increment = target / 100;
+        
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                numberElement.textContent = Math.ceil(current);
+                setTimeout(updateCounter, 20);
+            } else {
+                numberElement.textContent = target;
+            }
+        };
+        
+        // Start animation when element is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(counter);
+    });
+}
+
+// AOS Animation (Simple implementation)
+function initAOS() {
+    const elements = document.querySelectorAll('[data-aos]');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('aos-animate');
+                }, parseInt(entry.target.dataset.aosDelay) || 0);
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Skill Tag Interactions
+function initSkillTags() {
+    const skillTags = document.querySelectorAll('.skill-tag[data-skill]');
+    
+    skillTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            // Add a little animation feedback
+            tag.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                tag.style.transform = '';
+            }, 150);
+        });
+    });
+}
+
+// Initialize all animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateCounters();
+    initAOS();
+    initSkillTags();
+});
+
+// Smooth scrolling for internal links
+document.addEventListener('click', (e) => {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+});
+</script>
+{{ end }}

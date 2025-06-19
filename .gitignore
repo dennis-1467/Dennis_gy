@@ -1,0 +1,19 @@
+# Hugo build artifacts
+public/
+resources/
+.hugo_build.lock
+
+# Local development
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+
+# Python files (from our scripts)
+*.py
+
+# Temporary files
+*.tmp
+*.temp

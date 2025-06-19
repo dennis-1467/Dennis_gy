@@ -1,0 +1,9 @@
+baseURL = 'https://dennis-1467.github.io/Dennis_gy/'
+languageCode = 'en-us'
+title = 'My Assignment Blog'
+theme = 'ananke'
+
+[params]
+  description = 'Course Assignments & Technical Documentation'
+  author = 'Dennis Gyile Ngminmaale'
+  recent_posts_number = 5
