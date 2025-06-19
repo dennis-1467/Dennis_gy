@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on Dennis' Blog</title><link>https://dennis-1467.github.io/Dennis_gy/</link><description>Recent content in Welcome to My Blog on Dennis' Blog</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 31 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://dennis-1467.github.io/Dennis_gy/index.xml" rel="self" type="application/rss+xml"/><item><title>Assignment 3 — Deployment &amp; Integration of LLMs</title><link>https://dennis-1467.github.io/Dennis_gy/assignments/assignment3/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/assignments/assignment3/</guid><description>&lt;h2 id="1-objective">1 Objective&lt;/h2>
+&lt;p>Deploy &lt;strong>one cloud‑hosted&lt;/strong> and &lt;strong>one local&lt;/strong> LLM, integrate both inside Visual Studio Code, and document the process end‑to‑end.&lt;/p>
+&lt;hr>
+&lt;h2 id="2-environment-snapshot">2 Environment Snapshot&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Component&lt;/th>
+ &lt;th>Details&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Host OS&lt;/td>
+ &lt;td>Windows 11 + WSL 2 (Ubuntu 22.04)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>CPU / RAM&lt;/td>
+ &lt;td>Intel i7‑12700H · 7.6 GiB RAM&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Editors&lt;/td>
+ &lt;td>VS Code 1.89 + Continue ext.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Python&lt;/td>
+ &lt;td>3.12 (venv &lt;code>llm‐lab&lt;/code>)&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="3-online-model-api--together-ai">3 Online Model API — Together AI&lt;/h2>
+&lt;h3 id="31-key--endpoint">3.1 Key &amp;amp; Endpoint&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pip install requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export TOGETHER_AI_KEY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;together‑xxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>Endpoint:&lt;/strong> &lt;code>https://api.together.xyz/v1/chat/completions&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Model:&lt;/strong> &lt;code>mistralai/Mixtral‑8x7B‑Instruct‑v0.1&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="32-minimal-test-script">3.2 Minimal Test Script&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os&lt;span style="color:#f92672">,&lt;/span> json&lt;span style="color:#f92672">,&lt;/span> requests
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>url &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;https://api.together.xyz/v1/chat/completions&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>headers &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Authorization&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Bearer &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>os&lt;span style="color:#f92672">.&lt;/span>getenv(&lt;span style="color:#e6db74">&amp;#39;TOGETHER_AI_KEY&amp;#39;&lt;/span>)&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Content-Type&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;application/json&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>payload &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;model&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;mistralai/Mixtral-8x7B-Instruct-v0.1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;messages&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;role&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;system&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;content&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;You are a helpful assistant.&amp;#34;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;role&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;user&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;content&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Hello from Together AI!&amp;#34;&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>response &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>post(url, headers&lt;span style="color:#f92672">=&lt;/span>headers, json&lt;span style="color:#f92672">=&lt;/span>payload)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(response&lt;span style="color:#f92672">.&lt;/span>json()[&lt;span style="color:#e6db74">&amp;#34;choices&amp;#34;&lt;/span>][&lt;span style="color:#ae81ff">0&lt;/span>][&lt;span style="color:#e6db74">&amp;#34;message&amp;#34;&lt;/span>][&lt;span style="color:#e6db74">&amp;#34;content&amp;#34;&lt;/span>])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="33-terminal-output---together-ai-test">3.3 Terminal Output - Together AI Test&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">(&lt;/span>.venv&lt;span style="color:#f92672">)&lt;/span> enovodennis@Priest:~/llm-assignment$ python together_ping.py
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Hello! I&lt;span style="color:#e6db74">&amp;#39;m here to help you. What can I assist you with today? Please note that I&amp;#39;&lt;/span>m an AI and I&lt;span style="color:#e6db74">&amp;#39;m here to provide general information and answer questions to the best of my ability. If you have any specific concerns or issues, I&amp;#39;&lt;/span>ll try my best to assist you with the right response.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>&lt;em>Checkpoint:&lt;/em> Cloud LLM replies, confirming key + endpoint work.&lt;/p></description></item><item><title>About Me</title><link>https://dennis-1467.github.io/Dennis_gy/about/</link><pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/about/</guid><description/></item><item><title>Assignment 2: Static Personal Blog Website</title><link>https://dennis-1467.github.io/Dennis_gy/assignments/assignment2/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/assignments/assignment2/</guid><description>&lt;h2 id="-topic-description-blog-deployment-and-git-version-control">📌 Topic Description: Blog Deployment and Git Version Control&lt;/h2>
+&lt;p>This report details:&lt;/p>
+&lt;ul>
+&lt;li>Hugo site setup and deployment with GitHub Pages&lt;/li>
+&lt;li>Git commits and documentation practices&lt;/li>
+&lt;li>Markdown integration&lt;/li>
+&lt;/ul>
+&lt;h1 id="assignment-2-static-blog-website-deployment">Assignment 2: Static Blog Website Deployment&lt;/h1>
+&lt;p>&lt;strong>Student Name&lt;/strong>: GYILE DENNIS NGMINMAALE&lt;br>
+&lt;strong>Student ID&lt;/strong>: LS2425239&lt;br>
+&lt;strong>Submission Date&lt;/strong>: May 15, 2025&lt;/p>
+&lt;hr>
+&lt;h2 id="-objective">🎯 Objective&lt;/h2>
+&lt;p>To set up, customize, and deploy a static personal blog website using Hugo. The project integrates Git for version control and includes documentation of both the deployment process and the integration of previous assignment work.&lt;/p></description></item><item><title>Assignment 1: Command Line &amp; Documentation</title><link>https://dennis-1467.github.io/Dennis_gy/assignments/assignment1/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/assignments/assignment1/</guid><description>&lt;h2 id="-topic-description-matrix-multiplication-in-c-and-python">📌 Topic Description: Matrix Multiplication in C and Python&lt;/h2>
+&lt;p>This report covers:&lt;/p>
+&lt;ul>
+&lt;li>Matrix multiplication in both C and Python&lt;/li>
+&lt;li>System configuration and benchmarking&lt;/li>
+&lt;li>Use of the command line and technical documentation&lt;/li>
+&lt;/ul></description></item><item><title>Matrix Multiplication Project Report</title><link>https://dennis-1467.github.io/Dennis_gy/reports/assignment1/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>https://dennis-1467.github.io/Dennis_gy/reports/assignment1/</guid><description>&lt;h1 id="matrix-multiplication-project-report">Matrix Multiplication Project Report&lt;/h1>
+&lt;p>&lt;strong>Student Name&lt;/strong>: GYILE DENNIS NGMINMAALE&lt;br>
+&lt;strong>Student ID&lt;/strong>: LS2425239&lt;br>
+&lt;strong>Submission Date&lt;/strong>: Mar 20, 2025&lt;/p>
+&lt;h2 id="system-configuration">System Configuration&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Component&lt;/th>
+ &lt;th>Specification&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>CPU Model&lt;/strong>&lt;/td>
+ &lt;td>12th Gen Intel(R) Core(TM) i7-12700H&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Memory Size&lt;/strong>&lt;/td>
+ &lt;td>7.6 GiB RAM, 2.0 GiB Swap&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>OS Version&lt;/strong>&lt;/td>
+ &lt;td>Linux Priest 5.15.167.4-microsoft-standard-WSL2 (WSL2 on Windows)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Compiler Version&lt;/strong>&lt;/td>
+ &lt;td>GCC 13.3.0&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Python Version&lt;/strong>&lt;/td>
+ &lt;td>Python 3.12.3&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="implementation-details">Implementation Details&lt;/h2>
+&lt;h3 id="c-language-implementation">C Language Implementation&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Source Code&lt;/strong>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a[&lt;span style="color:#ae81ff">2&lt;/span>][&lt;span style="color:#ae81ff">2&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> {{&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>}, {&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>}};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> b[&lt;span style="color:#ae81ff">2&lt;/span>][&lt;span style="color:#ae81ff">2&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> {{&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>}, {&lt;span style="color:#ae81ff">7&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>}};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> result[&lt;span style="color:#ae81ff">2&lt;/span>][&lt;span style="color:#ae81ff">2&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result[i][j] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> k &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; k &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>; k&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result[i][j] &lt;span style="color:#f92672">+=&lt;/span> a[i][k] &lt;span style="color:#f92672">*&lt;/span> b[k][j];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Result matrix:&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%d &amp;#34;&lt;/span>, result[i][j]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Compilation Command
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>gcc matrix.c &lt;span style="color:#f92672">-&lt;/span>o matrix
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Execution Command
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>.&lt;span style="color:#f92672">/&lt;/span>matrix
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">### Python Language Implementation
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#f92672">**&lt;/span>Source Code&lt;span style="color:#f92672">**:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">```&lt;/span>python
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>], [&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>], [&lt;span style="color:#ae81ff">7&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>result &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>], [&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i in &lt;span style="color:#a6e22e">range&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> j in &lt;span style="color:#a6e22e">range&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> k in &lt;span style="color:#a6e22e">range&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result[i][j] &lt;span style="color:#f92672">+=&lt;/span> a[i][k] &lt;span style="color:#f92672">*&lt;/span> b[k][j]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">print&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Result matrix:&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> row in result:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">print&lt;/span>(&lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span>.&lt;span style="color:#a6e22e">join&lt;/span>(&lt;span style="color:#a6e22e">map&lt;/span>(str, row)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Execution Command
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>python3 matrix.py
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## Algorithm Verification
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">-&lt;/span> Both implementations were tested using &lt;span style="color:#ae81ff">2&lt;/span>x2 matrices:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>], B &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>]] [&lt;span style="color:#ae81ff">7&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Expected result:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[[&lt;span style="color:#ae81ff">19&lt;/span>, &lt;span style="color:#ae81ff">22&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#ae81ff">43&lt;/span>, &lt;span style="color:#ae81ff">50&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Both the C and Python programs output the correct result, confirming the correctness.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## Performance Analysis
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#f92672">**&lt;/span>Execution Times&lt;span style="color:#f92672">**:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|&lt;/span> Language &lt;span style="color:#f92672">|&lt;/span> Real time &lt;span style="color:#f92672">|&lt;/span> User &lt;span style="color:#f92672">|&lt;/span>System &lt;span style="color:#f92672">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|----------|---------------------|--------|--------|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|&lt;/span> C &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.011&lt;/span>s &lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.001&lt;/span>s&lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.002&lt;/span>s&lt;span style="color:#f92672">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|&lt;/span> Python &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.106&lt;/span>s &lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.019&lt;/span>s&lt;span style="color:#f92672">|&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>m0&lt;span style="color:#ae81ff">.000&lt;/span>s&lt;span style="color:#f92672">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#f92672">**&lt;/span>Analysis&lt;span style="color:#f92672">**:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> C is faster due to compilation and lower&lt;span style="color:#f92672">-&lt;/span>level memory management.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Python is slower because of its interpreted nature and dynamic typing.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## Conclusion
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>This project strengthened my skills in:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Using Unix&lt;span style="color:#f92672">/&lt;/span>Linux command line tools effectively.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Writing and formatting technical documentation in Markdown.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> Implementing and verifying the same algorithm in both compiled and interpreted languages.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## References
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>GCC Documentation: https:&lt;span style="color:#75715e">//gcc.gnu.org
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>Python Docs: https:&lt;span style="color:#75715e">//docs.python.org/3/
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>WSL Setup Guide: https:&lt;span style="color:#75715e">//learn.microsoft.com/en-us/windows/wsl/
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## Appendix
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">-&lt;/span> All tests were done in a WSL2 Ubuntu environment running on Windows &lt;span style="color:#ae81ff">11.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> No external libraries were used.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
